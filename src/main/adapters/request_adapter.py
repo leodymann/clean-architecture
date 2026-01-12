@@ -2,7 +2,7 @@ from flask import request as FlaskRequest
 from src.presentation.http_types.http_request import HttpRequest
 from src.presentation.http_types.http_response import HttpResponse
 
-def request_adapter(request, FlaskRequest, controller) -> HttpResponse:
+def request_adapter(request, controller) -> HttpResponse:
 
     body = None
     if request.data: body = request.json
@@ -11,7 +11,7 @@ def request_adapter(request, FlaskRequest, controller) -> HttpResponse:
         body=body,
         headers=request.headers,
         query_params=request.args,
-        path_params=request.vire_args,
+        path_params=request.view_args,
         url=request.full_path
     )
 
