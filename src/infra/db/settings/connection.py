@@ -1,3 +1,4 @@
+import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
@@ -5,12 +6,12 @@ class DBConnectionHandler:
 
     def __init__(self):
         self.__connection_string = "{}://{}:{}@{}:{}/{}".format(
-            'mysql+pymysql',
-            'dev',
-            '123456',
-            '127.0.0.1',
-            '3306',
-            'clean_database'
+            "mysql+pymysql",
+            os.getenv("DB_USER"),
+            os.getenv("DB_PASSWORD"),
+            os.getenv("DB_HOST"),
+            os.getenv("DB_PORT"),
+            os.getenv("DB_NAME")
         )
         self.__engine = self.__create_database_engine()
         self.session = None

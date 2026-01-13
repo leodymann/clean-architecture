@@ -1,13 +1,17 @@
 from flask import Blueprint, request, jsonify
 
+# Adapters
 from src.main.adapters.request_adapter import request_adapter
 
+# Composers
 from src.main.composers.user_finder_composer import user_finder_composer
 from src.main.composers.user_register_composer import user_register_composer
 
+# Validators
 from src.validators.user_register_validator import user_register_validator
 from src.validators.user_finder_validator import user_finder_validator
 
+# Erros
 from src.errors.types.error_handle import handle_errors
 
 user_route_bp = Blueprint("user_routes", __name__)
